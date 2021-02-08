@@ -1,0 +1,28 @@
+<div style="width: 400px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Type your email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          autocomplete="off"
+          required
+          placeholder="example@mail.com"
+          (keyup)="onKeyUp($event)"
+          (keyup.enter)="generateTicket()"
+          name="email"
+        />
+      </div>
+      <button (click)="generateTicket()" class="btn btn-success">Get a Random New Ticket</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+
+      <h3>You Ticket is: {{numbers}} </h3>
+      <button class="btn btn-success" (click)="newTicket()">Add Other Ticket</button>
+    </div>
+  </div>
+</div>

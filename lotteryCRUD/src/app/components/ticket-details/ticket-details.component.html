@@ -1,0 +1,38 @@
+<div style="width: 400px; margin: auto;">
+  <div *ngIf="currentTicket" class="submit-form">
+    <h4>Find Tickets</h4>
+    <form>
+      <div class="form-group">
+        <label for="email">Type Your Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          autocomplete="off"
+          (keyup)="onKeyUp($event)"
+          (ngModel)="currentTicket.email"
+          name="email"
+          (keyup.enter)="getTicket(currentTicket.email)"
+        />
+      </div>
+      <br>
+
+      <div *ngIf="submitted">
+        <h4>
+            Tickets Finded:
+        </h4>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let numbers of currentTicket.jogo; let i = index">
+             Ticket {{i}} - {{numbers}}
+          </li>
+        </ul>
+      </div>
+
+    </form>
+  </div>
+
+  <div *ngIf="!currentTicket">
+    <br />
+    <p>Cannot access this Ticket...</p>
+  </div>
+</div>
